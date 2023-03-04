@@ -1,10 +1,18 @@
 import './App.css';
-import AddExpense from './Components/Components/AddExpense';
+import {useState} from "react";
+import AddExpense from './Components/Components/AddExpence/AddExpense';
+import Header from './Components/Components/Header/Header';
+import { Expense } from './Components/Components/Models/Expense';
 
-function App() {
+function App () {
+
+  const [expenses, setExpenses] = useState<Expense[]>([])
+
   return (
     <div className="App">
-      <AddExpense />
+      cont
+      <Header />
+      <AddExpense  setExpenses={setExpenses} />
     </div>
   );
 }

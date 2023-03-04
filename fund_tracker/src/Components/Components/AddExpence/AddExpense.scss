@@ -1,0 +1,47 @@
+.addExpense {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+
+        &__reason, &__amount{
+            width: 50%;
+            height: 50px;
+            border-radius: 20px;
+            text-align: center;
+            border: none;
+        }
+
+        &__date {
+            width: 50%;
+            height: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: none;
+        }
+
+        &__categories{
+            height: 40px;
+            width: 50%;
+            border-radius: 50px;
+            text-align: center;
+            border: none;
+        }
+
+        &__addbutton{
+            height: 40px;
+            width: 50%;
+            border-radius: 50px;
+        }
+    }
+
+}
