@@ -10,6 +10,6 @@ export function Reducer (state:Expense, action:actions) {
         case "Date":
             return {...state, date:action.payload};
         case "Category":
-            return {...state, category:action.payload};
+            return {...state, category:action.payload}; 
     }
 }
