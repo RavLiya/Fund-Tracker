@@ -1,29 +1,26 @@
 import './App.css';
-import {useState, useEffect} from "react";
-import AddExpense from './Components/Components/AddExpence/AddExpense';
+import {useState} from "react";
+import AddExpense from './Components/Containers/AddExpence/AddExpense';
 import Header from './Components/Components/Header/Header';
 import { Expense } from './Components/Components/Models/Expense';
+import { createContext } from 'react';
+import { expenseListInitialState } from './Components/Components/Models/expenseListInitialState';
+import ExpenseList from './Components/Containers/ExpenseList/ExpenseList';
 
-let expensesList:Expense[];
+const StateContext = createContext(expenseListInitialState);
+const  expensesList = expenseListInitialState;
 
 function App () {
 
-  const [expenses, setExpenses] = useState<Expense>(Object);
-
-  function updateList() {
-    {...expensesList, expenses}
-  }
-  
-  useEffect(() => {
-    updateList();
-  }, expenses)
-
   return (
-    <div className="App">
+    <StateContext.Provider value={expensesList}>
       <Header />
-      <AddExpense  setExpenses={setExpenses} />
-    </div>
+      <AddExpense />
+      <ExpenseList />
+    </StateContext.Provider>
   );
 }
 
 export default App;
+
+export {StateContext};

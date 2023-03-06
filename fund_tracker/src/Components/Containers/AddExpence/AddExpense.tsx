@@ -1,25 +1,23 @@
 import "./AddExpense.scss";
-import { useReducer, useState } from "react";
-import { initialState } from "../Models/InitialStates";
-import { Reducer } from "../../Containers/Reducer";
-import { Expense } from "../Models/Expense";
+import { useContext, useReducer, useState } from "react";
+import { initialState } from "../../Components/Models/InitialStates";
+import { Reducer } from "../Reducer";
+import { Expense } from "../../Components/Models/Expense";
+import { StateContext } from "../../../App";
 
-type Props = {
-    setExpenses: React.Dispatch<React.SetStateAction<Expense>>;
-  }
-
-const AddExpense:React.FC<Props> =({setExpenses}) => {
+const AddExpense:React.FC =() => {
     const [state, dispatch] = useReducer (Reducer, initialState);
-
-    function handleSubmit(e:React.FormEvent<HTMLFormElement>, input:Expense) :void {
+    let  = useContext(StateContext);
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setExpenses(input);
-        console.log(input);
-    }
+        console.log(expensesList);
+        // expensesList.push(state);
+        return {...expensesList,state};
+    } 
 
     return (
         <div className="addExpense">
-            <form className="addExpense__form" onSubmit={(e:React.FormEvent<HTMLFormElement>) => handleSubmit(e,state)}>
+            <form className="addExpense__form" onSubmit={(e) => handleSubmit(e)}>
                 <input type="text" className="addExpense__form__reason" onChange={(e) => {dispatch({type:'Reason', payload:(e.target.value)})}} />
                 <input type="date" className="addExpense__form__date" onChange={(e) => {dispatch({type:'Date', payload:(e.target.value)})}} />
                 <input type="number" min="0.00" step="0.01" className="addExpense__form__amount" placeholder="0.0" onChange={(e) => {dispatch({type:'Amount', payload:(Number(e.target.value))})}} />

@@ -4,4 +4,6 @@ export type actions =
     | {type: "Amount", payload:number}
     | {type: "Date", payload:string}
     | {type: "Category", payload:string}
-    // | {type: "ExpenseState", payload:Expense}
+
+export type listActions =
+    | {type: "AddExpense", payload:Expense}
